@@ -12,6 +12,7 @@ module.exports = {
         secondary: "var(--color-secondary)",
         tertiary: "var(--color-tertiary)",
         text: "var(--color-text)",
+        iconstext: "var(--color-iconstext)",
       },
     },
   },

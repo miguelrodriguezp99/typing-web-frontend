@@ -18,6 +18,7 @@
   --color-secondary: #e2b714;
   --color-tertiary: #ddd;
   --color-text: white;
+  --color-iconstext: #4d4d4d;
 
 }
 
@@ -26,6 +27,7 @@
   --color-secondary: #e2b714;
   --color-tertiary: #ddd;
   --color-text: white;
+  --color-iconstext: #646669;
 }
 
 
@@ -34,6 +36,7 @@
   --color-secondary: #14649c;
   --color-tertiary: #14649c;
   --color-text: #14649c;
+  --color-iconstext: #4d4d4d;
 }
 
 .vscode {
@@ -41,4 +44,5 @@
   --color-secondary: #007acc;
   --color-tertiary: #007acc;
   --color-text: white;
+  --color-iconstext: #4d4d4d;
 }
