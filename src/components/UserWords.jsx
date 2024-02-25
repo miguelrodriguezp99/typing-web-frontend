@@ -8,7 +8,7 @@ const UserWords = ({ typed, expected }) => {
 
   return (
     <>
-      <div className="absolute inset-0 text-primary">
+      <div className="absolute inset-0 text-primary ">
         {typedCharacters.map((char, index) => (
           <Character
             key={`${char}_${index}`}
