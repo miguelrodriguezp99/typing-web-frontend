@@ -9,7 +9,6 @@ const SOUND_MAP = {
 };
 
 export const getSoundName = (sound) => {
-  console.log("sound", sound);
   switch (sound) {
     case SOUND_MAP["keyboard"]:
       return "keyboard";

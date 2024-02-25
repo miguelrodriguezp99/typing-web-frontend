@@ -2,11 +2,12 @@ import { useCallback, useEffect, useState } from "react";
 import "./Modal.css";
 import { useSoundsStore } from "../../store/sounds";
 import { SOUND_MAP, getSoundName } from "../Sound/sound";
+import { Volume, VolumeSilence } from "../../assets/icons/FooterIcons";
 
 export default function SoundModal() {
   const [modal, setModal] = useState(false);
   const [actualNameSong, setActualNameSong] = useState("cherry");
-  const { currentSong, setCurrentSound } = useSoundsStore();
+  const { setCurrentSound, muted, toggleMute } = useSoundsStore();
 
   useEffect(() => {
     const sound = localStorage.getItem("sound");
@@ -35,19 +36,31 @@ export default function SoundModal() {
 
   return (
     <>
-      <button onClick={toggleModal} className="p-3">
-        <div className="flex flex-row gap-1 justify-center text-center items-center group">
+      <div className="flex flex-row gap-1 justify-center text-center items-center">
+        {muted ? (
+          <button onClick={toggleMute} className="select-none">
+            <VolumeSilence props="fill-iconstext w-4 h-4 hover:fill-iconstext-hover transition-all duration-200" />
+          </button>
+        ) : (
+          <button onClick={toggleMute} className="select-none ">
+            <Volume props="fill-iconstext w-4 h-4 hover:fill-iconstext-hover transition-all duration-200" />
+          </button>
+        )}
+
+        <button onClick={toggleModal} className="p-3 group">
           <p className="text-iconstext group-hover:text-secondary-hover">
             {actualNameSong}
           </p>
-        </div>
-      </button>
-
+        </button>
+      </div>
       {modal && (
-        <div className="w-full h-full top-0 left-0 right-0 bottom-0 fixed">
+        <div
+          className="w-full h-full top-0 left-0 right-0 bottom-0 fixed
+        animate-fade-up animate-once animate-duration-300 animate-ease-out animate-normal animate-fill-both"
+        >
           <div
             onClick={toggleModal}
-            className="bg-[#313131b3] opacity-75 w-full h-full top-0 left-0 right-0 bottom-0 fixed"
+            className="bg-[#313131b3] opacity-75 w-full h-full top-0 left-0 right-0 bottom-0 fixed animate-none transition-none"
           ></div>
           <div className="modal-content bg-primary cursor-pointer rounded-xl text-secondary">
             <h2 className="mb-5">Select your sound!</h2>

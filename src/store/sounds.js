@@ -24,5 +24,15 @@ export const useSoundsStore = create((set, get) => ({
 
   toggleMute: () => {
     set({ muted: !get().muted });
+
+    if (get().muted) {
+      get().volume = 0;
+    } else {
+      get().volume = 0.25;
+    }
+
+    console.log(get().muted);
+    console.log(get().volume);
+    console.log(get().currentSound);
   },
 }));

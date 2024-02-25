@@ -71,7 +71,10 @@ export default function ThemeModal() {
       </button>
 
       {modal && (
-        <div className="w-full h-full top-0 left-0 right-0 bottom-0 fixed">
+        <div
+          className="w-full h-full top-0 left-0 right-0 bottom-0 fixed
+        animate-fade-up animate-once animate-duration-300 animate-ease-out animate-normal animate-fill-both"
+        >
           <div
             onClick={toggleModal}
             className="bg-[#313131b3] opacity-75 w-full h-full top-0 left-0 right-0 bottom-0 fixed"
