@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { faker } from "@faker-js/faker";
 import { generate } from "random-words";
 
 export const APP_STATE = {

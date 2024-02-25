@@ -2,14 +2,20 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { isKeyboardCodeAllowed } from "../utils/helpers";
 import { useWordsStore } from "../store/words";
+import { useSoundsStore } from "../store/sounds";
+import useSound from "use-sound";
 
 const useTyping = () => {
   const [typed, setTyped] = useState("");
   const [cursor, setCursor] = useState(0);
   const totalInputs = useRef(0);
   const { actualState, runState, words, finishedState } = useWordsStore();
-
   const hasFinished = cursor >= words?.length;
+
+  /* ---- Sonido ---- */
+  const { currentSound, volume } = useSoundsStore();
+  const [play] = useSound(currentSound, { volume: volume });
+  /* ----------------- */
 
   const keyDownHandler = useCallback(({ key, code }) => {
     if (!isKeyboardCodeAllowed(code)) return;
@@ -19,11 +25,13 @@ const useTyping = () => {
         setTyped((prev) => prev.slice(0, -1));
         setCursor((prev) => prev - 1);
         totalInputs.current -= 1;
+        play();
         break;
       default:
         setTyped((prev) => prev + key);
         setCursor((cursor) => cursor + 1);
         totalInputs.current += 1;
+        play();
         break;
     }
   });

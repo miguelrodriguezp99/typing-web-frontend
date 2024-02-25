@@ -8,6 +8,13 @@ export default function Modal() {
     setModal(!modal);
   }, [modal]);
 
+  // Initial theme
+  useEffect(() => {
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? document.documentElement.classList.add("dark")
+      : document.documentElement.classList.add("light");
+  }, []);
+
   const switchTheme = useCallback(
     (theme) => {
       return () => {
@@ -21,21 +28,13 @@ export default function Modal() {
     [oldTheme, toggleModal]
   );
 
-  // const mouseEnter = useCallback((theme) => {
-  //   return () => {
-  //     console.log("hi!");
-  //   };
-  // }, []);
-
   const mouseEnter = (theme) => {
-    console.log("hi!");
     const root = document.documentElement;
     root.classList.remove(oldTheme);
     root.classList.add(theme);
   };
 
   const mouseLeave = (theme) => {
-    console.log("bye!");
     const root = document.documentElement;
     root.classList.remove(theme);
     root.classList.add(oldTheme);
