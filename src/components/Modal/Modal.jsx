@@ -1,8 +1,19 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./Modal.css";
+import { Palette } from "../../assets/icons/FooterIcons";
 export default function Modal() {
   const [modal, setModal] = useState(false);
   const [oldTheme, setOldTheme] = useState("dark");
+  const [currentTheme, setCurrentTheme] = useState("dark");
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme) {
+      setCurrentTheme(theme);
+    } else {
+      setCurrentTheme("dark");
+    }
+  }, []);
 
   const toggleModal = useCallback(() => {
     setModal(!modal);
@@ -21,7 +32,9 @@ export default function Modal() {
         const root = document.documentElement;
         root.classList.remove(oldTheme);
         root.classList.add(theme);
+        localStorage.setItem("theme", theme);
         setOldTheme(theme);
+        setCurrentTheme(theme);
         toggleModal();
       };
     },
@@ -49,7 +62,12 @@ export default function Modal() {
   return (
     <>
       <button onClick={toggleModal} className="p-3">
-        Open
+        <div className="flex flex-row gap-1 justify-center text-center items-center group">
+          <Palette props="w-5 h-5 fill-iconstext group-hover:fill-secondary-hover" />
+          <p className="text-iconstext group-hover:text-secondary-hover">
+            {currentTheme}
+          </p>
+        </div>
       </button>
 
       {modal && (
@@ -57,9 +75,7 @@ export default function Modal() {
           <div
             onClick={toggleModal}
             className="bg-[#313131b3] opacity-75 w-full h-full top-0 left-0 right-0 bottom-0 fixed"
-          >
-            a
-          </div>
+          ></div>
           <div className="modal-content bg-primary cursor-pointer rounded-xl text-secondary">
             <h2 className="mb-5">Select your theme!</h2>
             <div className="flex flex-col">
@@ -67,20 +83,23 @@ export default function Modal() {
                 onClick={switchTheme("dark")}
                 onMouseEnter={() => mouseEnter("dark")}
                 onMouseLeave={() => mouseLeave("dark")}
+                className="text-iconstext hover:text-secondary-hover"
               >
-                Dark
+                dark
               </button>
               <button
                 onClick={switchTheme("light")}
                 onMouseEnter={() => mouseEnter("light")}
                 onMouseLeave={() => mouseLeave("light")}
+                className="text-iconstext hover:text-secondary-hover"
               >
-                Light
+                light
               </button>
               <button
                 onClick={switchTheme("vscode")}
                 onMouseEnter={() => mouseEnter("vscode")}
                 onMouseLeave={() => mouseLeave("vscode")}
+                className="text-iconstext hover:text-secondary-hover"
               >
                 vscode
               </button>

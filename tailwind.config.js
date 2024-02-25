@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         primary: "var(--color-primary)",
         secondary: "var(--color-secondary)",
+        "secondary-hover": "var(--color-secondary-hover)",
         tertiary: "var(--color-tertiary)",
         text: "var(--color-text)",
         iconstext: "var(--color-iconstext)",
