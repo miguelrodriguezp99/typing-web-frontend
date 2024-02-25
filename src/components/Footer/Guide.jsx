@@ -1,4 +1,3 @@
-import React from "react";
 import GuideKeys from "./GuideKeys";
 
 const Guide = () => {
@@ -9,7 +8,7 @@ const Guide = () => {
       </div>
 
       <div className="flex mx-auto items-center justify-center gap-3 text-[12px] text-iconstext mt-2">
-        <GuideKeys text="esc" /> or <GuideKeys text="ctrl" /> +{" "}
+        <GuideKeys text="esc" /> or <GuideKeys text="ctrl" />
         <GuideKeys text="shift" /> + <GuideKeys text="p" /> - command line
       </div>
     </>

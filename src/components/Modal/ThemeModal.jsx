@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./Modal.css";
 import { Palette } from "../../assets/icons/FooterIcons";
-export default function Modal() {
+export default function ThemeModal() {
   const [modal, setModal] = useState(false);
   const [oldTheme, setOldTheme] = useState("dark");
   const [currentTheme, setCurrentTheme] = useState("dark");

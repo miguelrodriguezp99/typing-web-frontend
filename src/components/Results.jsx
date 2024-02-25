@@ -1,6 +1,7 @@
 import React from "react";
 import { useWordsStore } from "../store/words";
 import cn from "classnames";
+import { Restart } from "../assets/icons/ResultsIcon";
 
 const Results = () => {
   const { errors, corrects, inputs, actualState, restart } = useWordsStore();
@@ -25,7 +26,9 @@ const Results = () => {
           <div className="text-secondary">Inputs: {inputs}</div>
         </div>
         <div>
-          <button onClick={handleClick}>Restart</button>
+          <button onClick={handleClick} className="px-4 py-0.5 rounded-md">
+            <Restart props="w-6 h-6 fill-iconstext stroke-iconstext stroke-2 hover:stroke-iconstext-hover hover:fill-iconstext-hover" />
+          </button>
         </div>
       </div>
     </>

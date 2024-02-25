@@ -14,6 +14,7 @@ module.exports = {
         tertiary: "var(--color-tertiary)",
         text: "var(--color-text)",
         iconstext: "var(--color-iconstext)",
+        "iconstext-hover": "var(--color-iconstext-hover)",
       },
     },
   },

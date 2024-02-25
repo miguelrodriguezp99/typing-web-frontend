@@ -1,14 +1,10 @@
 import React from "react";
-import Modal from "./Modal/Modal";
-
-import { SOUND_MAP } from "./Sound/sound";
-import { useSoundsStore } from "../store/sounds";
+import ThemeModal from "./Modal/ThemeModal";
 import { Mail, Support, Code, Discord, X } from "../assets/icons/FooterIcons";
 import Guide from "./Footer/Guide";
+import SoundModal from "./Modal/SoundModal";
 
 const Footer = () => {
-  const { setCurrentSound } = useSoundsStore();
-
   return (
     <>
       <div>
@@ -42,31 +38,9 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-wrap gap-3 mt-2 right-0">
-              <Modal />
-              <button
-                onClick={() => setCurrentSound(SOUND_MAP["cherry"])}
-                className="text-iconstext hover:text-secondary-hover"
-              >
-                cherry
-              </button>
-              <button
-                onClick={() => setCurrentSound(SOUND_MAP["typewriter"])}
-                className="text-iconstext hover:text-secondary-hover"
-              >
-                typewriter
-              </button>
-              <button
-                onClick={() => setCurrentSound(SOUND_MAP["keyboard"])}
-                className="text-iconstext hover:text-secondary-hover"
-              >
-                keyboard
-              </button>
-              <button
-                onClick={() => setCurrentSound("")}
-                className="text-iconstext hover:text-secondary-hover"
-              >
-                mute
-              </button>
+              <ThemeModal />
+
+              <SoundModal />
             </div>
           </div>
         </div>

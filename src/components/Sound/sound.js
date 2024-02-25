@@ -8,4 +8,18 @@ const SOUND_MAP = {
   cherry: cherryBlue,
 };
 
+export const getSoundName = (sound) => {
+  console.log("sound", sound);
+  switch (sound) {
+    case SOUND_MAP["keyboard"]:
+      return "keyboard";
+    case SOUND_MAP["typewriter"]:
+      return "typewriter";
+    case SOUND_MAP["cherry"]:
+      return "cherry";
+    default:
+      return "cherry";
+  }
+};
+
 export { SOUND_MAP };
