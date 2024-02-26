@@ -9,6 +9,14 @@ export default function SoundModal() {
   const [actualNameSong, setActualNameSong] = useState("cherry");
   const { setCurrentSound, muted, setMuteOn, setMuteOff } = useSoundsStore();
 
+  //Sound local Storage
+  useEffect(() => {
+    const mutedLocal = localStorage.getItem("muted");
+    if (mutedLocal === "true") {
+      setMuteOn();
+    }
+  }, [setMuteOff, setMuteOn]);
+
   const handleToggleMute = () => {
     if (muted) {
       setMuteOff();

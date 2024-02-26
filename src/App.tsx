@@ -12,15 +12,7 @@ import { useSoundsStore } from "./store/sounds";
 function App() {
 
   const setWords = useWordsStore((state) => state.setWords);
-  const { setMuteOn, setMuteOff, setVolume } = useSoundsStore();
 
-  //Sound local Storage
-  useEffect(() => {
-    const mutedLocal = localStorage.getItem("muted");
-    if (mutedLocal === "true") {
-      setMuteOn();
-    }
-  }, [setMuteOff, setMuteOn, setVolume]);
 
   //Start typing action
   useTyping();
