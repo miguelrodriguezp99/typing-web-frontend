@@ -16,6 +16,9 @@ const useTyping = () => {
   const [play] = useSound(currentSound, { volume: volume });
   /* ----------------- */
 
+  /* Cada linea son 82 caracteres */
+  /* Cuando lleve 164 hago un trasnlateY */
+
   const keyDownHandler = useCallback(
     ({ key, code }) => {
       if (!isKeyboardCodeAllowed(code)) return;

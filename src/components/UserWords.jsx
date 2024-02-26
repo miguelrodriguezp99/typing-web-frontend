@@ -1,23 +1,33 @@
+import { useEffect, useState } from "react";
 import { useWordsStore } from "../store/words";
 import Caret from "./Caret";
 import cn from "classnames";
+import useTranslate from "../hooks/useTranslate";
 
 const UserWords = () => {
-  const { typed, words: expected } = useWordsStore();
-
+  const { typed, words } = useWordsStore();
   const typedCharacters = typed.split("");
+  const { translateY } = useTranslate();
 
   return (
     <>
-      <div className="absolute inset-0 text-primary max-h-[160px] overflow-hidden">
-        {typedCharacters.map((char, index) => (
-          <Character
-            key={`${char}_${index}`}
-            typed={char}
-            expected={expected[index] ? expected[index] : " "}
-          />
-        ))}
-        <Caret />
+      <div className="max-h-[160px] overflow-y-hidden">
+        <div
+          className="absolute inset-0 text-primary "
+          style={{
+            transform: `translateY(${translateY}px)`,
+            transition: "transform 0.3s linear",
+          }}
+        >
+          {typedCharacters.map((char, index) => (
+            <Character
+              key={`${char}_${index}`}
+              typed={char}
+              expected={words[index] ? words[index] : " "}
+            />
+          ))}
+          <Caret />
+        </div>
       </div>
     </>
   );

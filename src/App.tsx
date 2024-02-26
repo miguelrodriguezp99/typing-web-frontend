@@ -32,7 +32,7 @@ function App() {
         <div className='mt-20'>
           <Timer />
           <WordsContainer>
-            <RandomWords words={words} />
+            <RandomWords />
             <UserWords />
           </WordsContainer>
 
@@ -52,7 +52,7 @@ function App() {
 const WordsContainer = ({ children }: { children: React.ReactNode }) => {
   return (
 
-    <div className="relative text-2xl max-w-6xl leading-relaxed mx-auto break-keep">
+    <div className="relative text-2xl max-w-6xl leading-relaxed mx-auto break-keep max-h-[160px] overflow-y-hidden">
       {children}
     </div>
   );
