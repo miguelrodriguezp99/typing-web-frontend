@@ -9,10 +9,13 @@ const useTyping = () => {
   const [cursor, setCursor] = useState(0);
   const { actualState, runState, words, finishedState, setTyped, deleteTyped } =
     useWordsStore();
+
+  const { muted } = useSoundsStore();
   const hasFinished = cursor >= words?.length;
 
   /* ---- Sonido ---- */
   const { currentSound, volume } = useSoundsStore();
+
   const [play] = useSound(currentSound, { volume: volume });
   /* ----------------- */
 
@@ -22,7 +25,9 @@ const useTyping = () => {
   const keyDownHandler = useCallback(
     ({ key, code }) => {
       if (!isKeyboardCodeAllowed(code)) return;
-      console.log(currentSound);
+
+      console.log(muted);
+
       switch (key) {
         case "Backspace":
           deleteTyped();
@@ -33,7 +38,10 @@ const useTyping = () => {
           setCursor((cursor) => cursor + 1);
           break;
       }
-      play();
+
+      if (!muted) {
+        play();
+      }
     },
     [currentSound, deleteTyped, setTyped, play]
   );

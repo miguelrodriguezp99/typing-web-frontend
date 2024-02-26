@@ -10,6 +10,7 @@ export default function ThemeModal() {
     const theme = localStorage.getItem("theme");
     if (theme) {
       setCurrentTheme(theme);
+      document.documentElement.classList.add(theme);
     } else {
       setCurrentTheme("dark");
     }

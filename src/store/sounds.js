@@ -12,12 +12,10 @@ const SOUND_MAP = {
 export const useSoundsStore = create((set, get) => ({
   volume: 0.25,
   currentSound: SOUND_MAP["cherry"],
-  muted: false,
+  muted: true,
 
   setCurrentSound: (sound) => {
     set({ currentSound: sound });
-    console.log(sound);
-    console.log(get().volume);
   },
 
   setVolume: (volume) => {
@@ -26,11 +24,13 @@ export const useSoundsStore = create((set, get) => ({
 
   toggleMute: () => {
     set({ muted: !get().muted });
+  },
 
-    if (get().muted) {
-      get().volume = 0;
-    } else {
-      get().volume = 0.25;
-    }
+  setMuteOn: () => {
+    set({ muted: true });
+  },
+
+  setMuteOff: () => {
+    set({ muted: false });
   },
 }));

@@ -7,7 +7,30 @@ import { Volume, VolumeSilence } from "../../assets/icons/FooterIcons";
 export default function SoundModal() {
   const [modal, setModal] = useState(false);
   const [actualNameSong, setActualNameSong] = useState("cherry");
-  const { setCurrentSound, muted, toggleMute } = useSoundsStore();
+  const {
+    setCurrentSound,
+    muted,
+    toggleMute,
+    setVolume,
+    setMuteOn,
+    setMuteOff,
+  } = useSoundsStore();
+
+  const handleToggleMute = useCallback(() => {
+    localStorage.setItem("muted", !muted);
+    toggleMute();
+  }, [toggleMute, muted]);
+
+  useEffect(() => {
+    const mutedLocal = localStorage.getItem("muted");
+    if (mutedLocal === "true") {
+      setMuteOn();
+      setVolume(0);
+    } else {
+      setMuteOff();
+      setVolume(0.25);
+    }
+  }, [setMuteOn, setMuteOff, muted, setVolume]);
 
   useEffect(() => {
     const sound = localStorage.getItem("sound");
@@ -38,11 +61,11 @@ export default function SoundModal() {
     <>
       <div className="flex flex-row gap-1 justify-center text-center items-center">
         {muted ? (
-          <button onClick={toggleMute} className="select-none">
+          <button onClick={handleToggleMute} className="select-none">
             <VolumeSilence props="fill-iconstext w-4 h-4 hover:fill-iconstext-hover transition-all duration-200" />
           </button>
         ) : (
-          <button onClick={toggleMute} className="select-none ">
+          <button onClick={handleToggleMute} className="select-none ">
             <Volume props="fill-iconstext w-4 h-4 hover:fill-iconstext-hover transition-all duration-200" />
           </button>
         )}
