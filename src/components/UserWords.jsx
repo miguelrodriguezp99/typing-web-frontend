@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useWordsStore } from "../store/words";
 import Caret from "./Caret";
 import cn from "classnames";
@@ -7,12 +7,14 @@ import useTranslate from "../hooks/useTranslate";
 const UserWords = () => {
   const { typed, words } = useWordsStore();
   const typedCharacters = typed.split("");
-  const { translateY } = useTranslate();
 
+  const ref = useRef(null);
+  const { translateY } = useTranslate(ref);
   return (
     <>
       <div className="max-h-[160px] overflow-y-hidden">
         <div
+          ref={ref}
           className="absolute inset-0 text-primary "
           style={{
             transform: `translateY(${translateY}px)`,
