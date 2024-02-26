@@ -31,7 +31,6 @@ function App() {
 
         <div className='mt-20'>
           <Timer />
-          {inputs}
           <WordsContainer>
             <RandomWords words={words} />
             <UserWords />
