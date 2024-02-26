@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useWordsStore } from "../store/words";
 
 const BASE_WIDTH = 1152; // Ancho base del contenedor para 82 letras

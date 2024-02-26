@@ -16,6 +16,9 @@ module.exports = {
         iconstext: "var(--color-iconstext)",
         "iconstext-hover": "var(--color-iconstext-hover)",
       },
+      screens: {
+        mmd: "1050px",
+      },
     },
   },
   plugins: [require("tailwindcss-animated")],

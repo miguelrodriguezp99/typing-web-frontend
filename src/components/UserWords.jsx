@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useWordsStore } from "../store/words";
 import Caret from "./Caret";
 import cn from "classnames";

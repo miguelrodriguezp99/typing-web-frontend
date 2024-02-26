@@ -17,13 +17,8 @@ import {
 } from "../assets/icons/HeaderIcons";
 
 const Header = () => {
-  const {
-    numberOfWords,
-    setNumberOfWords,
-    restart,
-    restartTyped,
-    actualState,
-  } = useWordsStore();
+  const { numberOfWords, setNumberOfWords, restart, restartTyped } =
+    useWordsStore();
 
   const handleWordsChange = (count) => {
     setNumberOfWords(count);
@@ -33,9 +28,9 @@ const Header = () => {
 
   return (
     // -------- Header -----------
-    <div className="max-w-[1152px] w-full flex flex-col align-center justify-center mx-auto pt-5 gap-2">
+    <div className="max-w-[1152px] flex flex-col align-center justify-center mx-auto pt-5 gap-2">
       <div className="flex flex-row gap-3">
-        <KeyboardIcon props="fill-secondary " />
+        <KeyboardIcon props="fill-secondary" />
 
         <h1 className="text-4xl font bold lef-0 text-tertiary">Typemonkey</h1>
         <div className="flex align-center items-center mt-2 gap-6 ml-2  flex-1">
@@ -51,52 +46,65 @@ const Header = () => {
       </div>
 
       {/* -------- Header Bottom -----------  */}
-      <div className="flex mt-8 right w-[70%] mx-auto rounded-md bg-[#2c2e31] p-2">
-        <section className="flex  gap-4 tracking-tight">
-          <div className="flex align-center items-center text-center gap-2 ml-3">
+      <section
+        className="flex mt-8  bg-[#2c2e31] p-2 
+      flex-col items-center gap-3 rounded-md w-[422px] mx-auto
+      md:flex-row md:gap-0 md:rounded-md md:max-w-full md:w-auto md:mx-auto
+      lg:flex-row lg:gap-0"
+      >
+        <section className="flex lg:gap-4 md:gap-2 sm:gap-10 gap-10 tracking-tight ">
+          <div className="flex align-center items-center text-center gap-1 lg:gap-2 md:gap-1 lg:ml-3 md:ml-1">
             <AtSign props="fill-iconstext w-4 h-4" />
             <p className="text-sm text-iconstext">punctuation</p>
           </div>
-          <div className="flex align-center items-center text-center gap-2">
+          <div className="flex align-center items-center text-center gap-1 lg:gap-2 md:gap-1">
             <Hashtag props="fill-iconstext w-4 h-4" />
             <p className="text-sm text-iconstext ">numbers</p>
           </div>
-
-          <div className="w-1 h-[22px] bg-primary rounded-md"></div>
+          <div className="w-1 h-[22px] bg-primary rounded-md hidden sm:hidden lg:flex md:flex"></div>
         </section>
 
         {/* -------- Header Middle  -----------  */}
 
-        <div className="flex flex-1 gap-4 tracking-tight">
-          <div className="flex align-center items-center text-center gap-2 ml-3">
+        <div
+          className="flex tracking-tight 
+        lg:ml-3 lg:gap-4 
+        md:ml-3 md:gap-1
+        sm:gap-6 sm:ml-0
+        gap-6 ml-0
+        "
+        >
+          <div className="flex align-center items-center text-center gap-1 lg:gap-2 md:gap-1 ">
             <Clock props="fill-iconstext w-4 h-4" />
             <p className="text-sm text-iconstext">time</p>
           </div>
 
-          <div className="flex align-center items-center text-center gap-2 ml-3">
+          <div className="flex align-center items-center text-center gap-1 lg:gap-2 md:gap-1 lg:ml-3 md:ml-2">
             <LetterA props="fill-iconstext w-4 h-4" />
             <p className="text-sm text-iconstext">words</p>
           </div>
 
-          <div className="flex align-center items-center text-center gap-2 ml-3">
+          <div className="flex align-center items-center text-center gap-1 lg:gap-2 md:gap-1 lg:ml-3 md:ml-2">
             <Quote props="fill-iconstext w-4 h-4" />
             <p className="text-sm text-iconstext">quote</p>
           </div>
 
-          <div className="flex align-center items-center text-center gap-2 ml-3">
+          <div className="flex align-center items-center text-center gap-1 lg:gap-2 md:gap-1 lg:ml-3 md:ml-2">
             <Mountain props="fill-iconstext w-4 h-4" />
             <p className="text-sm text-iconstext">zen</p>
           </div>
 
-          <div className="flex align-center items-center text-center gap-2 ml-3">
+          <div className="flex align-center items-center text-center gap-1 lg:gap-2 md:gap-1 lg:ml-3 md:ml-2">
             <Tool props="fill-iconstext w-4 h-4" />
             <p className="text-sm text-iconstext">custom</p>
           </div>
         </div>
 
         {/* -------- Header Bottom Right || SELECTION OF WORDS -----------  */}
-        <div className="flex gap-3 mr-3">
-          <div className={`w-1 h-[22px] bg-primary rounded-md`}></div>
+        <div className="flex mx-3 gap-8 sm:gap-8 lg:gap-3 md:gap-2.5">
+          <div
+            className={`w-1 h-[22px] bg-primary rounded-md hidden sm:hidden lg:flex md:flex`}
+          ></div>
           <button
             onClick={() => handleWordsChange(15)}
             selected={numberOfWords === "15"}
@@ -137,7 +145,7 @@ const Header = () => {
             </p>
           </button>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
