@@ -36,7 +36,7 @@ const Header = () => {
     <div className="max-w-[1152px] w-full flex flex-col align-center justify-center mx-auto pt-5 gap-2">
       <div className="flex flex-row gap-3">
         <KeyboardIcon props="fill-secondary " />
-        {actualState}
+
         <h1 className="text-4xl font bold lef-0 text-tertiary">Typemonkey</h1>
         <div className="flex align-center items-center mt-2 gap-6 ml-2  flex-1">
           <KeyboardSecondIcon props="fill-iconstext w-5 h-5" />
