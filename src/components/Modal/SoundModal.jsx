@@ -7,39 +7,17 @@ import { Volume, VolumeSilence } from "../../assets/icons/FooterIcons";
 export default function SoundModal() {
   const [modal, setModal] = useState(false);
   const [actualNameSong, setActualNameSong] = useState("cherry");
-  const {
-    setCurrentSound,
-    muted,
-    toggleMute,
-    setVolume,
-    setMuteOn,
-    setMuteOff,
-  } = useSoundsStore();
+  const { setCurrentSound, muted, setMuteOn, setMuteOff } = useSoundsStore();
 
-  const handleToggleMute = useCallback(() => {
-    localStorage.setItem("muted", !muted);
-    toggleMute();
-  }, [toggleMute, muted]);
-
-  useEffect(() => {
-    const mutedLocal = localStorage.getItem("muted");
-    if (mutedLocal === "true") {
-      setMuteOn();
-      setVolume(0);
-    } else {
+  const handleToggleMute = () => {
+    if (muted) {
       setMuteOff();
-      setVolume(0.25);
-    }
-  }, [setMuteOn, setMuteOff, muted, setVolume]);
-
-  useEffect(() => {
-    const sound = localStorage.getItem("sound");
-    if (sound) {
-      setCurrentSound(sound);
+      localStorage.setItem("muted", "false");
     } else {
-      setCurrentSound(SOUND_MAP["cherry"]);
+      setMuteOn();
+      localStorage.setItem("muted", "true");
     }
-  }, [setCurrentSound]);
+  };
 
   const toggleModal = useCallback(() => {
     setModal(!modal);

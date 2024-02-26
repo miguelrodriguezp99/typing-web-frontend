@@ -26,8 +26,6 @@ const useTyping = () => {
     ({ key, code }) => {
       if (!isKeyboardCodeAllowed(code)) return;
 
-      console.log(muted);
-
       switch (key) {
         case "Backspace":
           deleteTyped();
@@ -43,7 +41,7 @@ const useTyping = () => {
         play();
       }
     },
-    [currentSound, deleteTyped, setTyped, play]
+    [currentSound, deleteTyped, setTyped, play, muted]
   );
 
   /* Si terminamos de escribir entonces paramos */
