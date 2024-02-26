@@ -16,22 +16,24 @@ const useTyping = () => {
   const [play] = useSound(currentSound, { volume: volume });
   /* ----------------- */
 
-  const keyDownHandler = useCallback(({ key, code }) => {
-    if (!isKeyboardCodeAllowed(code)) return;
-    console.log("hello");
-    switch (key) {
-      case "Backspace":
-        deleteTyped();
-        setCursor((prev) => prev - 1);
-        play();
-        break;
-      default:
-        setTyped(key);
-        setCursor((cursor) => cursor + 1);
-        play();
-        break;
-    }
-  }, []);
+  const keyDownHandler = useCallback(
+    ({ key, code }) => {
+      if (!isKeyboardCodeAllowed(code)) return;
+      console.log(currentSound);
+      switch (key) {
+        case "Backspace":
+          deleteTyped();
+          setCursor((prev) => prev - 1);
+          break;
+        default:
+          setTyped(key);
+          setCursor((cursor) => cursor + 1);
+          break;
+      }
+      play();
+    },
+    [currentSound, deleteTyped, setTyped, play]
+  );
 
   /* Si terminamos de escribir entonces paramos */
   useEffect(() => {

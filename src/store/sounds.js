@@ -16,6 +16,8 @@ export const useSoundsStore = create((set, get) => ({
 
   setCurrentSound: (sound) => {
     set({ currentSound: sound });
+    console.log(sound);
+    console.log(get().volume);
   },
 
   setVolume: (volume) => {
@@ -30,9 +32,5 @@ export const useSoundsStore = create((set, get) => ({
     } else {
       get().volume = 0.25;
     }
-
-    console.log(get().muted);
-    console.log(get().volume);
-    console.log(get().currentSound);
   },
 }));
