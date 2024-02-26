@@ -14,7 +14,10 @@ function App() {
 
   const words = useWordsStore(state => state.words);
   const setWords = useWordsStore(state => state.setWords);
-  const { typed, setTyped } = useTyping();
+  const { inputs } = useWordsStore();
+
+  //Start typing action
+  useTyping();
 
   useEffect(() => {
     setWords();
@@ -24,13 +27,14 @@ function App() {
 
     <>
       <Wrapper>
-        <Header setTyped={setTyped} />
+        <Header />
 
         <div className='mt-20'>
           <Timer />
+          {inputs}
           <WordsContainer>
             <RandomWords words={words} />
-            <UserWords typed={typed} expected={words} />
+            <UserWords />
           </WordsContainer>
 
 

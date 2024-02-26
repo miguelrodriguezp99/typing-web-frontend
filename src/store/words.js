@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { generate } from "random-words";
+import { calculateErrors } from "../utils/helpers";
 
 export const APP_STATE = {
   STOPPED: "STOPPED",
@@ -12,9 +13,8 @@ export const useWordsStore = create((set, get) => ({
   words: null,
   actualState: APP_STATE.STOPPED,
   time: 30,
-  inputs: 0,
-  corrects: 0,
   errors: 0,
+  typed: "",
 
   setNumberOfWords: (count) => {
     set({ numberOfWords: count });
@@ -33,20 +33,34 @@ export const useWordsStore = create((set, get) => ({
     set({ time: time });
   },
 
-  setInputs: (inputs) => {
-    set({ inputs: inputs });
+  setErrors: (errors) => {
+    set({ errors: errors });
   },
 
-  setCorrects: (corrects) => {
-    set({ corrects: corrects });
+  //Concatenamos el typed content
+  setTyped: (typed) => {
+    set({ typed: get().typed + typed });
+  },
+
+  //Elimniamos ultimo elemento del typed content
+  deleteTyped: () => {
+    set({ typed: get().typed.slice(0, -1) });
+  },
+
+  //Restart typed content
+  restartTyped: () => {
+    set({ typed: "" });
   },
 
   incrementTypedValues: (typed, expected) => {
+    console.log("UPDADINT CHVALS");
     const isCorrect = typed === expected;
-    const isWhiteSpace = expected === " ";
-    if (!isCorrect && !isWhiteSpace) {
+
+    if (!isCorrect) {
+      console.log("Error");
       set({ errors: get().errors + 1 });
-    } else {
+    } else if (isCorrect) {
+      console.log("Correct");
       set({ corrects: get().corrects + 1 });
     }
     set({ inputs: get().inputs + 1 });
@@ -56,8 +70,9 @@ export const useWordsStore = create((set, get) => ({
     set({ inputs: 0 });
     set({ corrects: 0 });
     set({ errors: 0 });
-    get().stopState();
+    get().restartTyped();
     get().setWords();
+    get().stopState();
   },
 
   /* ---- Estados ---- */
@@ -71,6 +86,7 @@ export const useWordsStore = create((set, get) => ({
   },
 
   finishedState: () => {
+    get().setErrors(calculateErrors(get().typed, get().words));
     set({ actualState: APP_STATE.FINISHED });
   },
 }));

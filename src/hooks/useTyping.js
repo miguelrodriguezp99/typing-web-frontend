@@ -1,15 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { isKeyboardCodeAllowed } from "../utils/helpers";
 import { useWordsStore } from "../store/words";
 import { useSoundsStore } from "../store/sounds";
 import useSound from "use-sound";
 
 const useTyping = () => {
-  const [typed, setTyped] = useState("");
   const [cursor, setCursor] = useState(0);
-  const totalInputs = useRef(0);
-  const { actualState, runState, words, finishedState } = useWordsStore();
+  const { actualState, runState, words, finishedState, setTyped, deleteTyped } =
+    useWordsStore();
   const hasFinished = cursor >= words?.length;
 
   /* ---- Sonido ---- */
@@ -19,22 +18,20 @@ const useTyping = () => {
 
   const keyDownHandler = useCallback(({ key, code }) => {
     if (!isKeyboardCodeAllowed(code)) return;
-
+    console.log("hello");
     switch (key) {
       case "Backspace":
-        setTyped((prev) => prev.slice(0, -1));
+        deleteTyped();
         setCursor((prev) => prev - 1);
-        totalInputs.current -= 1;
         play();
         break;
       default:
-        setTyped((prev) => prev + key);
+        setTyped(key);
         setCursor((cursor) => cursor + 1);
-        totalInputs.current += 1;
         play();
         break;
     }
-  });
+  }, []);
 
   /* Si terminamos de escribir entonces paramos */
   useEffect(() => {
@@ -52,7 +49,6 @@ const useTyping = () => {
     if (actualState === "STOPPED") {
       setTyped("");
       setCursor(0);
-      totalInputs.current = 0;
     }
   }, [actualState]);
 
@@ -74,8 +70,6 @@ const useTyping = () => {
       window.removeEventListener("keydown", keyDownHandler);
     };
   }, [keyDownHandler, actualState]);
-
-  return { typed, setTyped };
 };
 
 export default useTyping;

@@ -4,7 +4,7 @@ import cn from "classnames";
 import { Restart } from "../assets/icons/ResultsIcon";
 
 const Results = () => {
-  const { errors, corrects, inputs, actualState, restart } = useWordsStore();
+  const { errors, actualState, restart, typed } = useWordsStore();
 
   const handleClick = () => {
     restart();
@@ -22,8 +22,8 @@ const Results = () => {
       >
         <div className="flex justify-between mx-10">
           <div className="text-secondary">Errors: {errors}</div>
-          <div className="text-secondary">Hits: {corrects}</div>
-          <div className="text-secondary">Inputs: {inputs}</div>
+          <div className="text-secondary">Hits: {typed.length - errors}</div>
+          <div className="text-secondary">Inputs: {typed.length}</div>
         </div>
         <div>
           <button onClick={handleClick} className="px-4 py-0.5 rounded-md">
