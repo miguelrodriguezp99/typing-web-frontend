@@ -73,9 +73,17 @@ const Wrapper = ({ children }: { children: React.ReactNode }) => {
     setFocusedTrue();
   };
 
+  const handleSetFocusedFalse = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFocusedFalse();
+    console.log("clicked")
+  };
+
   return (
-    <div id="wide-div" className="w-full bg-primary z-1" onClick={setFocusedFalse}>
-      <section className="bg-primary min-h-screen tracking-wider font-mono md:px-10 sm:px-5 px-2 relative  mx-auto z-99" onClick={(e) => handleSetFocusedTrue(e)}>
+    <div id="wide-div" className="w-full bg-primary" onClick={(e) => handleSetFocusedFalse(e)}>
+      <section className="bg-primary min-h-screen tracking-wider font-mono
+       md:px-10 sm:px-5 px-2 relative mx-auto 
+       lg:max-w-[1310px]" onClick={(e) => handleSetFocusedTrue(e)}>
         <div>{children}</div>
       </section>
     </div>
