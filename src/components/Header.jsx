@@ -32,7 +32,9 @@ const Header = () => {
       <div className="flex flex-row gap-3">
         <KeyboardIcon props="fill-secondary" />
 
-        <h1 className="text-4xl font bold lef-0 text-tertiary">Typemonkey</h1>
+        <h1 className="text-4xl font bold lef-0 text-iconstext-hover">
+          Typemonkey
+        </h1>
         <div className="flex align-center items-center mt-2 gap-6 ml-2  flex-1">
           <KeyboardSecondIcon props="fill-iconstext w-5 h-5" />
           <Crown props="fill-iconstext w-5 h-5" />
@@ -47,7 +49,7 @@ const Header = () => {
 
       {/* -------- Header Bottom -----------  */}
       <section
-        className="flex mt-8  bg-[#2c2e31] p-2 
+        className="flex mt-8 bg-tertiary p-2 
       flex-col items-center gap-3 rounded-md w-[422px] mx-auto
       md:flex-row md:gap-0 md:rounded-md md:max-w-full md:w-auto md:mx-auto
       lg:flex-row lg:gap-0"

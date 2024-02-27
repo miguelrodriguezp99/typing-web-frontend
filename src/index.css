@@ -23,13 +23,13 @@
 }
 
 .dark {
-  --color-primary: #333;
+  --color-primary: #333; 
   --color-secondary: #e2b714;
   --color-secondary-hover: #dfc772;
-  --color-tertiary: #ddd;
-  --color-text: white;
+  --color-tertiary: #2c2e31;
   --color-iconstext: #646669;
-  --color-iconstext-hover: #8a8b8d;
+  --color-iconstext-hover: #d1d0c5;
+  --color-text: white;
 }
 
 

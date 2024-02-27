@@ -11,8 +11,8 @@ import { useSoundsStore } from "./store/sounds";
 
 function App() {
 
-  const setWords = useWordsStore((state) => state.setWords);
 
+  const { setWords, actualState } = useWordsStore();
 
   //Start typing action
   useTyping();
@@ -26,7 +26,11 @@ function App() {
       <Wrapper>
         <Header />
 
-        <div className="mt-20">
+        <div>
+          <Results />
+        </div>
+
+        <div className={`mt-20 animate-fade animate-once animate-duration-[800ms] animate-normal animate-fill-both ${actualState === "FINISHED" ? 'hidden' : ''}`}>
           <Timer />
           <WordsContainer>
             <RandomWords />
@@ -34,7 +38,7 @@ function App() {
           </WordsContainer>
         </div>
 
-        <Results />
+
 
         <Footer />
       </Wrapper>
@@ -52,9 +56,9 @@ const WordsContainer = ({ children }: { children: React.ReactNode }) => {
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-    <body className="bg-primary min-h-screen tracking-wider font-mono md:px-10 sm:px-5 px-2">
+    <section className="bg-primary min-h-screen tracking-wider font-mono md:px-10 sm:px-5 px-2 relative">
       <div>{children}</div>
-    </body>
+    </section>
   );
 };
 
