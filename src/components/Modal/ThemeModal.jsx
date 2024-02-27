@@ -5,6 +5,7 @@ export default function ThemeModal() {
   const [modal, setModal] = useState(false);
   const [oldTheme, setOldTheme] = useState("dark");
   const [currentTheme, setCurrentTheme] = useState("dark");
+  const [animationClass, setAnimationClass] = useState("");
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -16,9 +17,30 @@ export default function ThemeModal() {
     }
   }, []);
 
+  const closeModal = useCallback(() => {
+    setAnimationClass("");
+    setTimeout(() => {
+      setAnimationClass(
+        "animate-fade-up animate-once animate-duration-300 animate-ease-out animate-reverse "
+      );
+    }, 10);
+
+    setTimeout(() => {
+      setModal(false);
+      setAnimationClass("");
+    }, 300);
+  }, []);
+
   const toggleModal = useCallback(() => {
-    setModal(!modal);
-  }, [modal]);
+    if (modal) {
+      closeModal();
+    } else {
+      setModal(true);
+      setAnimationClass(
+        "animate-fade-up animate-once animate-duration-300 animate-ease-out animate-normal"
+      );
+    }
+  }, [modal, closeModal]);
 
   // Initial theme
   useEffect(() => {
@@ -73,8 +95,8 @@ export default function ThemeModal() {
 
       {modal && (
         <div
-          className="w-full h-full top-0 left-0 right-0 bottom-0 fixed
-        animate-fade-up animate-once animate-duration-300 animate-ease-out animate-normal animate-fill-both"
+          className={`w-full h-full top-0 left-0 right-0 bottom-0 fixed
+        ${animationClass}`}
         >
           <div
             onClick={toggleModal}

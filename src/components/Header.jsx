@@ -1,7 +1,6 @@
 import { useWordsStore } from "../store/words";
 import {
   AtSign,
-  Bell,
   Clock,
   Crown,
   Hashtag,
@@ -15,6 +14,7 @@ import {
   Settings,
   Tool,
 } from "../assets/icons/HeaderIcons";
+import NotificationModal from "./Modal/NotificationModal";
 
 const Header = () => {
   const { numberOfWords, setNumberOfWords, restart, restartTyped } =
@@ -47,7 +47,7 @@ const Header = () => {
           <Settings props="fill-iconstext w-5 h-5" />
         </div>
         <div className="flex flex-row align-center items-center mt-2 gap-6 ml-2">
-          <Bell props="fill-iconstext w-6 h-6" />
+          <NotificationModal />
           <Profile props="fill-iconstext w-5 h-5" />
         </div>
       </div>
