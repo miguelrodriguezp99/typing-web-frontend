@@ -75,7 +75,7 @@ const Wrapper = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div id="wide-div" className="w-full bg-primary z-1" onClick={setFocusedFalse}>
-      <section className="bg-primary min-h-screen tracking-wider font-mono md:px-10 sm:px-5 px-2 relative max-w-[1152px] mx-auto z-99" onClick={(e) => handleSetFocusedTrue(e)}>
+      <section className="bg-primary min-h-screen tracking-wider font-mono md:px-10 sm:px-5 px-2 relative  mx-auto z-99" onClick={(e) => handleSetFocusedTrue(e)}>
         <div>{children}</div>
       </section>
     </div>

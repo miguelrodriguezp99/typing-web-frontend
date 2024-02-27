@@ -1,3 +1,4 @@
+import { Cursor } from "../assets/icons/ResultsIcon";
 import { useWordsStore } from "../store/words";
 
 const BlurEffect = () => {
@@ -19,10 +20,11 @@ const BlurEffect = () => {
         <div className="inset-0 text-primary opacity-85 grid items-center ">
           <div
             className={`text-[#ddd] flex items-center 
-          justify-center text-center mt-10 text-md
+          justify-center text-center mt-10 text-[18px] gap-2
           ${!isFocused ? "appear" : ""}`}
           >
-            Click Here or start typing to focus
+            <Cursor props="w-5 h-5 fill-[#ddd]" />
+            Click here or start typing to focus
           </div>
         </div>
       </div>

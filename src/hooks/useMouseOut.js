@@ -13,7 +13,7 @@ const useMouseOut = () => {
 
     // Función para manejar el evento de ganar el foco
     const handleFocus = () => {
-      setMouseOut(false);
+      //setMouseOut(false);
     };
 
     // Agregar event listeners al montar
