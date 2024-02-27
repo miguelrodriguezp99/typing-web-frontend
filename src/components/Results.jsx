@@ -21,6 +21,7 @@ const Results = () => {
   const handleClick = () => {
     restart();
   };
+
   const takeScreenshot = () => {
     // const animationClasses = "animate-fade animate-once animate-duration-[800ms] animate-normal animate-fill-both";
     const element = document.getElementById("main-info-info");

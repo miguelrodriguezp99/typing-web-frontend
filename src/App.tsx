@@ -8,6 +8,7 @@ import { useWordsStore } from "./store/words";
 import Results from "./components/Results";
 import Footer from "./components/Footer";
 import { Toaster } from 'sonner';
+import BlurEffect from "./components/BlurEffect";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <WordsContainer>
             <RandomWords />
             <UserWords />
+            <BlurEffect />
           </WordsContainer>
         </div>
 
@@ -50,18 +52,24 @@ function App() {
 }
 
 const WordsContainer = ({ children }: { children: React.ReactNode }) => {
+
   return (
-    <div className="relative text-2xl max-w-6xl leading-relaxed mx-auto break-keep max-h-[160px] overflow-y-hidden">
+    <div className="relative text-2xl max-w-6xl leading-relaxed mx-auto break-keep max-h-[160px] overflow-y-hidden" >
       {children}
     </div>
   );
 };
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
+
+  const { setFocusedFalse } = useWordsStore();
+
   return (
-    <section className="bg-primary min-h-screen tracking-wider font-mono md:px-10 sm:px-5 px-2 relative">
-      <div>{children}</div>
-    </section>
+    <div id="wide-div" className="w-full bg-primary z-1" onClick={setFocusedFalse}>
+      <section className="bg-primary min-h-screen tracking-wider font-mono md:px-10 sm:px-5 px-2 relative max-w-[1152px] mx-auto z-99">
+        <div>{children}</div>
+      </section>
+    </div>
   );
 };
 

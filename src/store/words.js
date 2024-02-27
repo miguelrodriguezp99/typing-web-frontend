@@ -15,6 +15,7 @@ export const useWordsStore = create((set, get) => ({
   time: 60,
   errors: 0,
   typed: "",
+  isFocused: true,
 
   setNumberOfWords: (count) => {
     set({ numberOfWords: count });
@@ -88,5 +89,15 @@ export const useWordsStore = create((set, get) => ({
   finishedState: () => {
     get().setErrors(calculateErrors(get().typed, get().words));
     set({ actualState: APP_STATE.FINISHED });
+  },
+
+  setFocusedTrue: () => {
+    set({ isFocused: true });
+    console.log(get().isFocused);
+  },
+
+  setFocusedFalse: () => {
+    set({ isFocused: false });
+    console.log(get().isFocused);
   },
 }));

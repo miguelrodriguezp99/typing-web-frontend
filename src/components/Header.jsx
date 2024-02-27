@@ -32,11 +32,16 @@ const Header = () => {
       <div className="flex flex-row gap-3">
         <KeyboardIcon props="fill-secondary" />
 
-        <h1 className="text-4xl font bold lef-0 text-iconstext-hover">
+        <h1
+          className="text-4xl font bold lef-0 text-iconstext-hover cursor-pointer"
+          onClick={restart}
+        >
           Typemonkey
         </h1>
-        <div className="flex align-center items-center mt-2 gap-6 ml-2  flex-1">
-          <KeyboardSecondIcon props="fill-iconstext w-5 h-5" />
+        <div className="flex align-center items-center mt-2 gap-6 ml-2 flex-1 ">
+          <div onClick={restart}>
+            <KeyboardSecondIcon props="fill-iconstext w-5 h-5 transition-all duration-300 hover:fill-iconstext-hover cursor-pointer" />
+          </div>
           <Crown props="fill-iconstext w-5 h-5" />
           <Info props="fill-iconstext w-5 h-5" />
           <Settings props="fill-iconstext w-5 h-5" />
@@ -112,17 +117,22 @@ const Header = () => {
             selected={numberOfWords === "15"}
           >
             <p
-              className={`text-sm font-semibold ${
-                numberOfWords === 15 ? "text-secondary" : "text-iconstext"
+              className={`text-sm font-semibold transition-all duration-300 ${
+                numberOfWords === 15
+                  ? "text-secondary"
+                  : "text-iconstext hover:text-iconstext-hover"
               }`}
             >
               15
             </p>
           </button>
+
           <button onClick={() => handleWordsChange(30)}>
             <p
-              className={`text-sm font-semibold ${
-                numberOfWords === 30 ? "text-secondary" : "text-iconstext"
+              className={`text-sm font-semibold transition-all duration-300 ${
+                numberOfWords === 30
+                  ? "text-secondary"
+                  : "text-iconstext hover:text-iconstext-hover"
               }`}
             >
               30
@@ -130,8 +140,10 @@ const Header = () => {
           </button>
           <button onClick={() => handleWordsChange(60)}>
             <p
-              className={`text-sm font-semibold ${
-                numberOfWords === 60 ? "text-secondary" : "text-iconstext"
+              className={`text-sm font-semibold transition-all duration-300 ${
+                numberOfWords === 60
+                  ? "text-secondary"
+                  : "text-iconstext hover:text-iconstext-hover"
               }`}
             >
               60
@@ -139,8 +151,10 @@ const Header = () => {
           </button>
           <button onClick={() => handleWordsChange(75)}>
             <p
-              className={`text-sm font-semibold ${
-                numberOfWords === 75 ? "text-secondary" : "text-iconstext"
+              className={`text-sm font-semibold transition-all duration-300 ${
+                numberOfWords === 75
+                  ? "text-secondary"
+                  : "text-iconstext hover:text-iconstext-hover"
               }`}
             >
               75

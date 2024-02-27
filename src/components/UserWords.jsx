@@ -3,9 +3,10 @@ import { useWordsStore } from "../store/words";
 import Caret from "./Caret";
 import cn from "classnames";
 import useTranslate from "../hooks/useTranslate";
+import "./blur.css";
 
 const UserWords = () => {
-  const { typed, words } = useWordsStore();
+  const { typed, words, isFocused } = useWordsStore();
   const typedCharacters = typed.split("");
 
   const ref = useRef(null);
@@ -15,7 +16,9 @@ const UserWords = () => {
       <div className="max-h-[160px] overflow-y-hidden">
         <div
           ref={ref}
-          className="absolute inset-0 text-primary "
+          className={`absolute inset-0 text-primary ${
+            !isFocused ? "blured" : ""
+          } `}
           style={{
             transform: `translateY(${translateY}px)`,
             transition: "transform 0.3s linear",
