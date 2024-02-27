@@ -15,7 +15,6 @@ import TypeArea from "./components/TypeArea";
 
 function App() {
 
-
   const { setWords } = useWordsStore();
 
   //Handle mouse out of the window

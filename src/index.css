@@ -13,6 +13,12 @@
 }
 
 
+* button {
+  user-select: none;
+  
+}
+
+
 :root {
   --color-primary: #333;
   --color-secondary: #e2b714;

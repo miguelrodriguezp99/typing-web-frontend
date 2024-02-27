@@ -20,16 +20,17 @@ const Header = () => {
   const { numberOfWords, setNumberOfWords, restart, restartTyped } =
     useWordsStore();
 
-  const handleWordsChange = (count) => {
+  const handleWordsChange = (count, event) => {
     setNumberOfWords(count);
     restart();
     restartTyped();
+    event.currentTarget.blur();
   };
 
   return (
     // -------- Header -----------
     <div className="max-w-[1152px] flex flex-col align-center justify-center mx-auto pt-5 gap-2">
-      <div className="flex flex-row gap-3">
+      <div className="flex flex-row gap-3 items-center">
         <KeyboardIcon props="fill-secondary" />
 
         <h1
@@ -113,7 +114,7 @@ const Header = () => {
             className={`w-1 h-[22px] bg-primary rounded-md hidden sm:hidden lg:flex md:flex`}
           ></div>
           <button
-            onClick={() => handleWordsChange(15)}
+            onClick={(event) => handleWordsChange(15, event)}
             selected={numberOfWords === "15"}
           >
             <p
@@ -127,7 +128,7 @@ const Header = () => {
             </p>
           </button>
 
-          <button onClick={() => handleWordsChange(30)}>
+          <button onClick={(event) => handleWordsChange(30, event)}>
             <p
               className={`text-sm font-semibold transition-all duration-300 ${
                 numberOfWords === 30
@@ -138,7 +139,7 @@ const Header = () => {
               30
             </p>
           </button>
-          <button onClick={() => handleWordsChange(60)}>
+          <button onClick={(event) => handleWordsChange(60, event)}>
             <p
               className={`text-sm font-semibold transition-all duration-300 ${
                 numberOfWords === 60
@@ -149,7 +150,7 @@ const Header = () => {
               60
             </p>
           </button>
-          <button onClick={() => handleWordsChange(75)}>
+          <button onClick={(event) => handleWordsChange(75, event)}>
             <p
               className={`text-sm font-semibold transition-all duration-300 ${
                 numberOfWords === 75
