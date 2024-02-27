@@ -12,6 +12,7 @@ import {
 } from "../assets/icons/ResultsIcon";
 import { toast } from "sonner";
 import html2canvas from "html2canvas";
+
 //import "../styles/Results.css";
 
 const Results = () => {
@@ -21,13 +22,11 @@ const Results = () => {
     restart();
   };
   const takeScreenshot = () => {
-    console.log("Taking screenshot of the whole viewport");
-
-    const animationClasses =
-      "animate-fade animate-once animate-duration-[800ms] animate-normal animate-fill-both";
+    // const animationClasses = "animate-fade animate-once animate-duration-[800ms] animate-normal animate-fill-both";
     const element = document.getElementById("main-info-info");
     if (!element) return;
-    element.classList.remove(...animationClasses.split(" "));
+    element.classList.remove("animate-duration-[800ms]");
+    element.classList.add("animate-duration-[0ms]");
 
     setTimeout(() => {
       html2canvas(element, {
@@ -41,7 +40,7 @@ const Results = () => {
         // Puedes ajustar scale según sea necesario para mejorar la calidad o el rendimiento
       })
         .then((canvas) => {
-          element.classList.add(...animationClasses.split(" "));
+          // element.classList.add(...animationClasses.split(" "));
           canvas.toBlob((blob) => {
             try {
               navigator.clipboard
@@ -51,24 +50,22 @@ const Results = () => {
                   }),
                 ])
                 .then(() => {
-                  console.log("Screenshot of the viewport copied to clipboard");
+                  toast.success("Screenshot copied to clipboard");
                 })
                 .catch((err) => {
-                  console.error("Error copying screenshot to clipboard", err);
+                  toast.error("Error copying screenshot to clipboard");
                 });
             } catch (error) {
-              console.error(
-                "Clipboard API not available or permission denied",
-                error
-              );
+              toast.error("Error copying screenshot to clipboard");
             }
           });
         })
-        .catch((error) => console.log("Screenshot not available", error));
+        .catch((error) => toast.error("Error copying screenshot to clipboard"));
 
-      element.classList.add(...animationClasses.split(" "));
-      toast.success("Screenshot copied to clipboard");
-    }, 500); // Ajusta el tiempo de espera según necesites
+      //element.classList.add(...animationClasses.split(" "));
+      element.classList.remove("animate-duration-[0ms]");
+      element.classList.add("animate-duration-[800ms]");
+    }, 500);
   };
 
   return (
@@ -94,7 +91,7 @@ const Results = () => {
             </div>
           </div>
           <div className="w-full bg-[#312f2f] ml-3">
-            <div className="">a</div>
+            <div className=""></div>
           </div>
         </div>
 
