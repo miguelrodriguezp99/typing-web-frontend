@@ -86,8 +86,8 @@ export default function ThemeModal() {
     <>
       <button onClick={toggleModal} className="p-3">
         <div className="flex flex-row gap-1 justify-center text-center items-center group">
-          <Palette props="w-5 h-5 fill-iconstext group-hover:fill-secondary-hover" />
-          <p className="text-iconstext group-hover:text-secondary-hover">
+          <Palette props="w-5 h-5 fill-iconstext group-hover:fill-iconstext-hover" />
+          <p className="text-iconstext group-hover:text-iconstext-hover">
             {currentTheme}
           </p>
         </div>
@@ -128,6 +128,22 @@ export default function ThemeModal() {
                 className="text-iconstext hover:text-secondary-hover"
               >
                 vscode
+              </button>
+              <button
+                onClick={switchTheme("trance")}
+                onMouseEnter={() => mouseEnter("trance")}
+                onMouseLeave={() => mouseLeave("trance")}
+                className="text-iconstext hover:text-secondary-hover"
+              >
+                trance
+              </button>
+              <button
+                onClick={switchTheme("eva")}
+                onMouseEnter={() => mouseEnter("eva")}
+                onMouseLeave={() => mouseLeave("eva")}
+                className="text-iconstext hover:text-secondary-hover"
+              >
+                eva-04
               </button>
             </div>
           </div>

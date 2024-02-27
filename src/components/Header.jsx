@@ -31,10 +31,10 @@ const Header = () => {
     // -------- Header -----------
     <div className="max-w-[1152px] flex flex-col align-center justify-center mx-auto pt-5 gap-2">
       <div className="flex flex-row gap-3 items-center">
-        <KeyboardIcon props="fill-secondary" />
+        <KeyboardIcon props="fill-selected" />
 
         <h1
-          className="text-4xl font bold lef-0 text-iconstext-hover cursor-pointer"
+          className="text-4xl font bold lef-0 text-logo cursor-pointer"
           onClick={restart}
         >
           Typemonkey
@@ -120,7 +120,7 @@ const Header = () => {
             <p
               className={`text-sm font-semibold transition-all duration-300 ${
                 numberOfWords === 15
-                  ? "text-secondary"
+                  ? "text-selected"
                   : "text-iconstext hover:text-iconstext-hover"
               }`}
             >
@@ -132,7 +132,7 @@ const Header = () => {
             <p
               className={`text-sm font-semibold transition-all duration-300 ${
                 numberOfWords === 30
-                  ? "text-secondary"
+                  ? "text-selected"
                   : "text-iconstext hover:text-iconstext-hover"
               }`}
             >
@@ -143,7 +143,7 @@ const Header = () => {
             <p
               className={`text-sm font-semibold transition-all duration-300 ${
                 numberOfWords === 60
-                  ? "text-secondary"
+                  ? "text-selected"
                   : "text-iconstext hover:text-iconstext-hover"
               }`}
             >
@@ -154,7 +154,7 @@ const Header = () => {
             <p
               className={`text-sm font-semibold transition-all duration-300 ${
                 numberOfWords === 75
-                  ? "text-secondary"
+                  ? "text-selected"
                   : "text-iconstext hover:text-iconstext-hover"
               }`}
             >

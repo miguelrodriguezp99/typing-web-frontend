@@ -39,9 +39,6 @@ const useTranslate = (divRef) => {
 
         const newMaxIndex = newOffset * 2;
         setMaxIndex(newMaxIndex);
-        console.log(divRef?.current?.offsetWidth);
-        console.log(maxIndex);
-        console.log(newOffset);
       }
     };
     // Agregar el manejador de eventos 'resize' al objeto window
@@ -58,9 +55,6 @@ const useTranslate = (divRef) => {
       setMaxIndex(maxIndex + offset);
       setTranslateY(translateY - 40);
     }
-    console.log("Escrito: " + typed.length);
-    console.log("MaxIndex: " + maxIndex);
-    console.log("Offset: " + offset);
   }, [numberOfWords, typed.length, translateY, maxIndex, offset, words]);
 
   //Reiniciar el trasnlate

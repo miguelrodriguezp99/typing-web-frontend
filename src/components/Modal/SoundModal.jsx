@@ -79,7 +79,7 @@ export default function SoundModal() {
         )}
 
         <button onClick={toggleModal} className="p-3 group">
-          <p className="text-iconstext group-hover:text-secondary-hover">
+          <p className="text-iconstext hover:text-iconstext-hover">
             {actualNameSong}
           </p>
         </button>

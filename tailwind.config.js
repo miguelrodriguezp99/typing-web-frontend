@@ -15,6 +15,10 @@ module.exports = {
         text: "var(--color-text)",
         iconstext: "var(--color-iconstext)",
         "iconstext-hover": "var(--color-iconstext-hover)",
+        logo: "var(--color-logo)",
+        selected: "var(--color-selected)",
+        error: "var(--color-error)",
+        randomwords: "var(--color-randomwords)",
       },
       screens: {
         mmd: "1050px",

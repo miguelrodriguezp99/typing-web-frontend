@@ -19,11 +19,11 @@ const BlurEffect = () => {
       >
         <div className="inset-0 text-primary opacity-85 grid items-center ">
           <div
-            className={`text-[#ddd] flex items-center 
+            className={`text-text flex items-center 
           justify-center text-center mt-10 text-[18px] gap-2
           ${!isFocused ? "appear" : ""}`}
           >
-            <Cursor props="w-5 h-5 fill-[#ddd]" />
+            <Cursor props="w-5 h-5 fill-text" />
             Click here or start typing to focus
           </div>
         </div>

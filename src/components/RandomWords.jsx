@@ -12,7 +12,7 @@ const RandomWords = () => {
     <>
       <div className=" overflow-y-hidden max-h-[150px]">
         <div
-          className={`text-[#4a4c50] transition-all delay-75 ${
+          className={`text-randomwords transition-all delay-75 ${
             !isFocused ? "blured" : ""
           } `}
           ref={ref}
