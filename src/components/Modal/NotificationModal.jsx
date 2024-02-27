@@ -9,13 +9,24 @@ import {
 export default function NotificationModal() {
   const [modal, setModal] = useState(false);
   const [animationClass, setAnimationClass] = useState("");
+  const [backgroundClass, setBackgroundClass] = useState("");
 
   // Necesitamos hacer un timeout para poder hacer la animacion de salida sin que desaparezca el modal de golpe
   const closeModal = useCallback(() => {
-    setAnimationClass("modalOut"); // Aplica la clase para animar hacia fuera
+    setAnimationClass("modalOut");
+    setBackgroundClass("");
+    // Aplica la clase para animar hacia fuera
+    setTimeout(() => {
+      setBackgroundClass(
+        "animate-fade animate-once animate-duration-300 animate-ease-linear animate-reverse animate-fill-both"
+      );
+    }, 10);
+
+    // Aplica la clase para animar el fondo
     setTimeout(() => {
       setModal(false);
       setAnimationClass("");
+      setBackgroundClass("");
     }, 300);
   }, []);
 
@@ -25,6 +36,9 @@ export default function NotificationModal() {
     } else {
       setModal(true);
       setAnimationClass("translated"); // Clase para animar hacia dentro
+      setBackgroundClass(
+        "animate-fade animate-once animate-duration-300 animate-ease-linear animate-fill-both"
+      );
     }
   }, [modal, closeModal]);
 
@@ -42,7 +56,7 @@ export default function NotificationModal() {
         <>
           <div
             onClick={toggleModal}
-            className="bg-[#0d0d0e] opacity-75 w-full h-full top-0 left-0 right-0 bottom-0 fixed animate-none transition-none"
+            className={`bg-[#0d0d0e] opacity-75 w-full h-full top-0 left-0 right-0 bottom-0 fixed ${backgroundClass}`}
           ></div>
           <div
             className={`fixed bg-primary w-[382px] right-0 h-screen top-0 rounded-l-xl ${animationClass}`}
