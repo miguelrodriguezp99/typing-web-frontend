@@ -54,14 +54,11 @@ export const useWordsStore = create((set, get) => ({
   },
 
   incrementTypedValues: (typed, expected) => {
-    console.log("UPDADINT CHVALS");
     const isCorrect = typed === expected;
 
     if (!isCorrect) {
-      console.log("Error");
       set({ errors: get().errors + 1 });
     } else if (isCorrect) {
-      console.log("Correct");
       set({ corrects: get().corrects + 1 });
     }
     set({ inputs: get().inputs + 1 });
@@ -93,11 +90,9 @@ export const useWordsStore = create((set, get) => ({
 
   setFocusedTrue: () => {
     set({ isFocused: true });
-    console.log(get().isFocused);
   },
 
   setFocusedFalse: () => {
     set({ isFocused: false });
-    console.log(get().isFocused);
   },
 }));

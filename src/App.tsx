@@ -10,12 +10,13 @@ import Footer from "./components/Footer";
 import { Toaster } from 'sonner';
 import BlurEffect from "./components/BlurEffect";
 import useMouseOut from "./hooks/useMouseOut";
+import TypeArea from "./components/TypeArea";
 
 
 function App() {
 
 
-  const { setWords, actualState } = useWordsStore();
+  const { setWords } = useWordsStore();
 
   //Handle mouse out of the window
   useMouseOut();
@@ -31,22 +32,8 @@ function App() {
     <>
       <Wrapper>
         <Header />
-
-        <div>
-          <Results />
-        </div>
-
-        <div className={`mt-20 animate-fade animate-once animate-duration-[800ms] animate-normal animate-fill-both ${actualState === "FINISHED" ? 'hidden' : ''}`}>
-          <Timer />
-          <WordsContainer>
-            <RandomWords />
-            <UserWords />
-            <BlurEffect />
-          </WordsContainer>
-        </div>
-
-
-
+        <Results />
+        <TypeArea />
         <Footer />
       </Wrapper>
 
@@ -55,14 +42,7 @@ function App() {
   );
 }
 
-const WordsContainer = ({ children }: { children: React.ReactNode }) => {
 
-  return (
-    <div className="relative text-2xl max-w-6xl leading-relaxed mx-auto break-keep max-h-[160px] overflow-y-hidden" >
-      {children}
-    </div>
-  );
-};
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
 
@@ -76,7 +56,7 @@ const Wrapper = ({ children }: { children: React.ReactNode }) => {
   const handleSetFocusedFalse = (e: React.MouseEvent) => {
     e.stopPropagation();
     setFocusedFalse();
-    console.log("clicked")
+
   };
 
   return (
