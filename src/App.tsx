@@ -9,12 +9,16 @@ import Results from "./components/Results";
 import Footer from "./components/Footer";
 import { Toaster } from 'sonner';
 import BlurEffect from "./components/BlurEffect";
+import useMouseOut from "./hooks/useMouseOut";
 
 
 function App() {
 
 
   const { setWords, actualState } = useWordsStore();
+
+  //Handle mouse out of the window
+  useMouseOut();
 
   //Start typing action
   useTyping();
@@ -62,11 +66,16 @@ const WordsContainer = ({ children }: { children: React.ReactNode }) => {
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
 
-  const { setFocusedFalse } = useWordsStore();
+  const { setFocusedFalse, setFocusedTrue } = useWordsStore();
+
+  const handleSetFocusedTrue = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFocusedTrue();
+  };
 
   return (
     <div id="wide-div" className="w-full bg-primary z-1" onClick={setFocusedFalse}>
-      <section className="bg-primary min-h-screen tracking-wider font-mono md:px-10 sm:px-5 px-2 relative max-w-[1152px] mx-auto z-99">
+      <section className="bg-primary min-h-screen tracking-wider font-mono md:px-10 sm:px-5 px-2 relative max-w-[1152px] mx-auto z-99" onClick={(e) => handleSetFocusedTrue(e)}>
         <div>{children}</div>
       </section>
     </div>

@@ -1,6 +1,5 @@
 .blured {
     animation: setblur 0.5s ease-in-out 1s both;
-    gap: 3px;
 }
 
 @keyframes setblur {
