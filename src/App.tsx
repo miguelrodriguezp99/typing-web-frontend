@@ -7,7 +7,8 @@ import useTyping from "./hooks/useTyping";
 import { useWordsStore } from "./store/words";
 import Results from "./components/Results";
 import Footer from "./components/Footer";
-import { useSoundsStore } from "./store/sounds";
+import { Toaster } from 'sonner';
+
 
 function App() {
 
@@ -42,6 +43,8 @@ function App() {
 
         <Footer />
       </Wrapper>
+
+      <Toaster richColors position="top-right" />
     </>
   );
 }

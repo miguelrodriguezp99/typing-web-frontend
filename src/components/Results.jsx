@@ -10,6 +10,8 @@ import {
   Restart,
   Screenshot,
 } from "../assets/icons/ResultsIcon";
+import { toast } from "sonner";
+import html2canvas from "html2canvas";
 //import "../styles/Results.css";
 
 const Results = () => {
@@ -18,18 +20,69 @@ const Results = () => {
   const handleClick = () => {
     restart();
   };
+  const takeScreenshot = () => {
+    console.log("Taking screenshot of the whole viewport");
+
+    const animationClasses =
+      "animate-fade animate-once animate-duration-[800ms] animate-normal animate-fill-both";
+    const element = document.getElementById("main-info-info");
+    if (!element) return;
+    element.classList.remove(...animationClasses.split(" "));
+
+    setTimeout(() => {
+      html2canvas(element, {
+        logging: true, // Para depuración, muestra mensajes en la consola
+        useCORS: true, // Permite cargar recursos externos dentro del canvas
+        width: window.innerWidth, // Captura el ancho completo del viewport
+        height: window.innerHeight, // Captura el alto completo del viewport
+
+        scrollX: 0, // Ajustes de desplazamiento, si es necesario
+        scrollY: 0, // Ajustes de desplazamiento, si es necesario
+        // Puedes ajustar scale según sea necesario para mejorar la calidad o el rendimiento
+      })
+        .then((canvas) => {
+          element.classList.add(...animationClasses.split(" "));
+          canvas.toBlob((blob) => {
+            try {
+              navigator.clipboard
+                .write([
+                  new ClipboardItem({
+                    "image/png": blob,
+                  }),
+                ])
+                .then(() => {
+                  console.log("Screenshot of the viewport copied to clipboard");
+                })
+                .catch((err) => {
+                  console.error("Error copying screenshot to clipboard", err);
+                });
+            } catch (error) {
+              console.error(
+                "Clipboard API not available or permission denied",
+                error
+              );
+            }
+          });
+        })
+        .catch((error) => console.log("Screenshot not available", error));
+
+      element.classList.add(...animationClasses.split(" "));
+      toast.success("Screenshot copied to clipboard");
+    }, 500); // Ajusta el tiempo de espera según necesites
+  };
 
   return (
     <>
       <section
+        id="main-info-info"
         className={cn({
-          "max-w-[1152px] align-center justify-center mx-auto mt-10": true,
+          "max-w-[1152px] align-center justify-center mx-auto mt-10 block bg-primary": true,
           "animate-fade animate-once animate-duration-[800ms] animate-normal animate-fill-both":
             actualState === "FINISHED",
           hidden: actualState !== "FINISHED",
         })}
       >
-        <div className="flex">
+        <div id="main-info" className="flex w-full h-full">
           <div className="bg-primary flex flex-col p-1">
             <div className="">
               <div className="text-3xl text-iconstext">wpm</div>
@@ -41,7 +94,7 @@ const Results = () => {
             </div>
           </div>
           <div className="w-full bg-[#312f2f] ml-3">
-            <div className=""></div>
+            <div className="">a</div>
           </div>
         </div>
 
@@ -91,8 +144,8 @@ const Results = () => {
             <button>
               <Replay props="w-[20px] h-[20px] fill-iconstext" />
             </button>
-            <button>
-              <Screenshot props="w-[20px] h-[20px] fill-iconstext" />
+            <button onClick={takeScreenshot}>
+              <Screenshot props="w-[20px] h-[20px] fill-iconstext hover:fill-iconstext-hover transition-all duration-300" />
             </button>
           </div>
         </div>
