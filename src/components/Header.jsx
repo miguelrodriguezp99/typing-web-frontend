@@ -15,8 +15,10 @@ import {
   Tool,
 } from "../assets/icons/HeaderIcons";
 import NotificationModal from "./Modal/NotificationModal";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const { numberOfWords, setNumberOfWords, restart, restartTyped } =
     useWordsStore();
 
@@ -25,6 +27,12 @@ const Header = () => {
     restart();
     restartTyped();
     event.currentTarget.blur();
+  };
+
+  const handleCrownClick = (e) => {
+    e.preventDefault();
+    console.log("crown");
+    navigate("/chart");
   };
 
   return (
@@ -43,7 +51,9 @@ const Header = () => {
           <div onClick={restart}>
             <KeyboardSecondIcon props="fill-iconstext w-5 h-5 transition-all duration-300 hover:fill-iconstext-hover cursor-pointer" />
           </div>
-          <Crown props="fill-iconstext w-5 h-5" />
+          <div onClick={(e) => handleCrownClick(e)}>
+            <Crown props="fill-iconstext w-5 h-5" />
+          </div>
           <Info props="fill-iconstext w-5 h-5" />
           <Settings props="fill-iconstext w-5 h-5" />
         </div>

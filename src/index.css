@@ -70,7 +70,7 @@
 
 .trance {
   --color-primary: #00021b;
-  --color-secondary: #007acc;
+  --color-secondary: #e51376;
   --color-secondary-hover: #e4d612;
   --color-tertiary: #18214c;
   --color-iconstext: #3c4c79;
@@ -98,7 +98,7 @@
 
 /* 
   --color-primary: background
-  --color-secondary: timer
+  --color-secondary: timer y results
   --color-tertiary: subheader
   --color-iconstext: #55c35b;
   --color-iconstext-hover: #55c35b;

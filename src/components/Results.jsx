@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useWordsStore } from "../store/words";
 import cn from "classnames";
 import {
@@ -12,6 +12,9 @@ import {
 } from "../assets/icons/ResultsIcon";
 import { toast } from "sonner";
 import html2canvas from "html2canvas";
+
+import LineChart from "./Chart/LineChart";
+import { UserData } from "./Chart/Data";
 
 //import "../styles/Results.css";
 
@@ -91,9 +94,8 @@ const Results = () => {
               <div className="text-6xl text-secondary">100%</div>
             </div>
           </div>
-          <div className="w-full bg-[#312f2f] ml-3">
-            <div className=""></div>
-          </div>
+
+          <LineChart />
         </div>
 
         <div className="bg-primary flex justify-between p-1 text-xl mt-3">
