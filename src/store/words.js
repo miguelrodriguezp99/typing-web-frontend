@@ -12,7 +12,7 @@ export const useWordsStore = create((set, get) => ({
   numberOfWords: 30,
   words: null,
   actualState: APP_STATE.STOPPED,
-  time: 1,
+  time: 30,
   errors: 0,
   typed: "",
   isFocused: true,
