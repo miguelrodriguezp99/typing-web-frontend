@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ChartComp from './components/Chart/Chart';
 
 
 
@@ -14,7 +15,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/*" element={<App />} />
-      <Route path='/chart' element={<App />} />
+      <Route path='/chart' element={<ChartComp />} />
     </Routes>
   </BrowserRouter>
 

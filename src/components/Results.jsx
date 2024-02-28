@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useWordsStore } from "../store/words";
 import cn from "classnames";
 import {
@@ -12,18 +12,28 @@ import {
 } from "../assets/icons/ResultsIcon";
 import { toast } from "sonner";
 import html2canvas from "html2canvas";
-
-import LineChart from "./Chart/LineChart";
-import { UserData } from "./Chart/Data";
+import ChartComp from "./Chart/Chart";
 
 //import "../styles/Results.css";
 
 const Results = () => {
   const { errors, actualState, restart, typed } = useWordsStore();
+  const chartRef = useRef(null);
+  const [showChart, setShowChart] = useState(false);
+
+  useEffect(() => {
+    // Temporizador para retrasar la renderización de LineChart
+    const timer = setTimeout(() => {
+      setShowChart(true);
+    }, 1000); // Retraso de 1 segundo
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleClick = () => {
     restart();
   };
+
+  const handleChartClick = () => {};
 
   const takeScreenshot = () => {
     // const animationClasses = "animate-fade animate-once animate-duration-[800ms] animate-normal animate-fill-both";
@@ -94,8 +104,7 @@ const Results = () => {
               <div className="text-6xl text-secondary">100%</div>
             </div>
           </div>
-
-          <LineChart />
+          <ChartComp />
         </div>
 
         <div className="bg-primary flex justify-between p-1 text-xl mt-3">

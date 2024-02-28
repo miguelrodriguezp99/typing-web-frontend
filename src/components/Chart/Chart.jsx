@@ -1,35 +1,22 @@
 /* eslint-disable no-undef */
-import React, { useState } from "react";
-import BarChart from "./BarChart";
-import { UserData } from "./Data";
-import LineChart from "./LineChart";
+import { LineChart, Line, XAxis, YAxis } from "recharts";
 
 const ChartComp = () => {
-  const [userData, setUserData] = useState({
-    labels: UserData.map((data) => data.year),
-    datasets: [
-      {
-        label: "User Gain",
-        data: UserData.map((data) => data.userGain),
-        backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
-        ],
-
-        borderColor: "black",
-        borderWidth: 2,
-      },
-    ],
-  });
-
+  const data = [
+    { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
+    { name: "Page B", uv: 500, pv: 2800, amt: 2800 },
+    { name: "Page C", uv: 300, pv: 1398, amt: 1398 },
+    { name: "Page D", uv: 200, pv: 9800, amt: 9800 },
+    { name: "Page E", uv: 278, pv: 3908, amt: 3908 },
+    { name: "Page F", uv: 189, pv: 4800, amt: 4800 },
+  ];
   return (
     <>
-      <div style={{ width: 700 }}>
-        <LineChart chartData={userData} />
-      </div>
+      <LineChart width={1000} height={200} data={data}>
+        <Line type="monotone" dataKey="uv" stroke="black" />
+        <XAxis dataKey="name" />
+        <YAxis />
+      </LineChart>
     </>
   );
 };
