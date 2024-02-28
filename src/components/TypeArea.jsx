@@ -4,6 +4,7 @@ import RandomWords from "./RandomWords";
 import UserWords from "./UserWords";
 import BlurEffect from "./BlurEffect";
 import { useWordsStore } from "../store/words";
+import "./../styles/blur.css";
 
 const TypeArea = () => {
   const { actualState } = useWordsStore();

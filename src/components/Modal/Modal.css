@@ -72,3 +72,7 @@ body.active-modal {
 .modalOut {
     animation: modalOutAnimation 0.3s ;
 }
+
+.zindex {
+    z-index: 9999 !important;
+}

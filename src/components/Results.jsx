@@ -1,4 +1,3 @@
-import React, { useEffect, useRef, useState } from "react";
 import { useWordsStore } from "../store/words";
 import cn from "classnames";
 import {
@@ -18,22 +17,10 @@ import ChartComp from "./Chart/Chart";
 
 const Results = () => {
   const { errors, actualState, restart, typed } = useWordsStore();
-  const chartRef = useRef(null);
-  const [showChart, setShowChart] = useState(false);
-
-  useEffect(() => {
-    // Temporizador para retrasar la renderización de LineChart
-    const timer = setTimeout(() => {
-      setShowChart(true);
-    }, 1000); // Retraso de 1 segundo
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleClick = () => {
     restart();
   };
-
-  const handleChartClick = () => {};
 
   const takeScreenshot = () => {
     // const animationClasses = "animate-fade animate-once animate-duration-[800ms] animate-normal animate-fill-both";

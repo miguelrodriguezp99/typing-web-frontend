@@ -1,7 +1,7 @@
 import { useWordsStore } from "../store/words";
 import useTranslate from "../hooks/useTranslate";
 import { useRef } from "react";
-import "./blur.css";
+import "./../styles/blur.css";
 
 const RandomWords = () => {
   const { words, isFocused } = useWordsStore();
@@ -10,7 +10,7 @@ const RandomWords = () => {
 
   return (
     <>
-      <div className=" overflow-y-hidden max-h-[150px]">
+      <div className="overflow-y-hidden max-h-[150px]">
         <div
           className={`text-randomwords transition-all delay-75 ${
             !isFocused ? "blured" : ""

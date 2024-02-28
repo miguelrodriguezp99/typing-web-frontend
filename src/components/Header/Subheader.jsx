@@ -1,24 +1,16 @@
-import { useWordsStore } from "../store/words";
+import React from "react";
+import { useWordsStore } from "../../store/words";
 import {
   AtSign,
   Clock,
-  Crown,
   Hashtag,
-  Info,
-  KeyboardIcon,
-  KeyboardSecondIcon,
   LetterA,
   Mountain,
-  Profile,
   Quote,
-  Settings,
   Tool,
-} from "../assets/icons/HeaderIcons";
-import NotificationModal from "./Modal/NotificationModal";
-import { useNavigate } from "react-router-dom";
+} from "../../assets/icons/HeaderIcons";
 
-const Header = () => {
-  const navigate = useNavigate();
+const Subheader = () => {
   const { numberOfWords, setNumberOfWords, restart, restartTyped } =
     useWordsStore();
 
@@ -28,42 +20,8 @@ const Header = () => {
     restartTyped();
     event.currentTarget.blur();
   };
-
-  const handleCrownClick = (e) => {
-    e.preventDefault();
-    console.log("crown");
-    navigate("/chart");
-  };
-
   return (
-    // -------- Header -----------
-    <div className="max-w-[1152px] flex flex-col align-center justify-center mx-auto pt-5 gap-2">
-      <div className="flex flex-row gap-3 items-center">
-        <KeyboardIcon props="fill-selected" />
-
-        <h1
-          className="text-4xl font bold lef-0 text-logo cursor-pointer"
-          onClick={restart}
-        >
-          Typemonkey
-        </h1>
-        <div className="flex align-center items-center mt-2 gap-6 ml-2 flex-1 ">
-          <div onClick={restart}>
-            <KeyboardSecondIcon props="fill-iconstext w-5 h-5 transition-all duration-300 hover:fill-iconstext-hover cursor-pointer" />
-          </div>
-          <div onClick={(e) => handleCrownClick(e)}>
-            <Crown props="fill-iconstext w-5 h-5" />
-          </div>
-          <Info props="fill-iconstext w-5 h-5" />
-          <Settings props="fill-iconstext w-5 h-5" />
-        </div>
-        <div className="flex flex-row align-center items-center mt-2 gap-6 ml-2">
-          <NotificationModal />
-          <Profile props="fill-iconstext w-5 h-5" />
-        </div>
-      </div>
-
-      {/* -------- Header Bottom -----------  */}
+    <>
       <section
         className="flex mt-8 bg-tertiary p-2 
       flex-col items-center gap-3 rounded-md w-[422px] mx-auto
@@ -173,8 +131,8 @@ const Header = () => {
           </button>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
-export default Header;
+export default Subheader;

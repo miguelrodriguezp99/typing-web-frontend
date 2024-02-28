@@ -3,7 +3,7 @@ import { useWordsStore } from "../store/words";
 import Caret from "./Caret";
 import cn from "classnames";
 import useTranslate from "../hooks/useTranslate";
-import "./blur.css";
+import "./../styles/blur.css";
 
 const UserWords = () => {
   const { typed, words, isFocused } = useWordsStore();

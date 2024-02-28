@@ -1,14 +1,10 @@
 import React, { useEffect } from "react";
-import Timer from "./components/Timer";
-import RandomWords from "./components/RandomWords";
-import UserWords from "./components/UserWords";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import useTyping from "./hooks/useTyping";
 import { useWordsStore } from "./store/words";
 import Results from "./components/Results";
 import Footer from "./components/Footer";
 import { Toaster } from 'sonner';
-import BlurEffect from "./components/BlurEffect";
 import useMouseOut from "./hooks/useMouseOut";
 import TypeArea from "./components/TypeArea";
 
