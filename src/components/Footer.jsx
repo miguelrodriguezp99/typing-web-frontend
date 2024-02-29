@@ -8,7 +8,14 @@ import "./Footer/Footer.css";
 const Footer = () => {
   return (
     <>
-      <div className="text-center left-0 bg-primary h-full min-h-[251px] flex flex-col justify-end ">
+      <div
+        className="text-center left-0 
+      bg-primary h-full min-h-[305px] 
+      flex flex-col justify-end 
+      lg:max-w-[1240px] mx-auto
+      md:px-10 sm:px-5 lg:px-10
+      "
+      >
         <section className="stk">
           <Guide />
 

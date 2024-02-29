@@ -14,22 +14,21 @@ const TypeArea = () => {
   };
   return (
     <>
-      <div className="">
-        <div
-          className={`mt-[125px] animate-fade animate-once 
-          max-h-[515px] h-full 
-        animate-duration-[800ms] animate-normal 
-        animate-fill-both ${actualState === "FINISHED" ? "hidden" : ""}`}
-          onClick={handleDivClick}
-        >
-          <input type="text" className="absolute hidden" ref={inputRef} />
-          <Timer />
-          <WordsContainer>
-            <RandomWords />
-            <UserWords />
-            <BlurEffect />
-          </WordsContainer>
-        </div>
+      <div
+        className={`animate-fade animate-once 
+          max-h-[515px]  
+          mt-[50px] sm:mt-[75px] md:mt-[100px] lg:mt-[125px] 
+          animate-duration-[800ms] animate-normal 
+          animate-fill-both ${actualState === "FINISHED" ? "hidden" : ""}`}
+        onClick={handleDivClick}
+      >
+        <input type="text" className="absolute hidden" ref={inputRef} />
+        <Timer />
+        <WordsContainer>
+          <RandomWords />
+          <UserWords />
+          <BlurEffect />
+        </WordsContainer>
       </div>
     </>
   );
