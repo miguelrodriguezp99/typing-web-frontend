@@ -16,7 +16,7 @@ const TypeArea = () => {
     <>
       <div className="">
         <div
-          className={`mt-[150px] animate-fade animate-once 
+          className={`mt-[125px] animate-fade animate-once 
           max-h-[515px] h-full 
         animate-duration-[800ms] animate-normal 
         animate-fill-both ${actualState === "FINISHED" ? "hidden" : ""}`}

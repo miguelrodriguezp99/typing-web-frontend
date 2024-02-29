@@ -36,7 +36,7 @@ function App() {
         className="bg-primary
          tracking-wider font-mono
          md:px-10 sm:px-5 px-2 mx-auto 
-         lg:max-w-[1310px] heigthcalc"
+         lg:max-w-[1310px] heigthcalc z-2"
         onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleSetFocusedTrue(e)}
       >
         <Options />

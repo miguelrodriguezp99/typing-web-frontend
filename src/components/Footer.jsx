@@ -3,15 +3,14 @@ import ThemeModal from "./Modal/ThemeModal";
 import { Mail, Support, Code, Discord, X } from "../assets/icons/FooterIcons";
 import Guide from "./Footer/Guide";
 import SoundModal from "./Modal/SoundModal";
+import "./Footer/Footer.css";
 
 const Footer = () => {
   return (
     <>
-      <div>
-        <div className="text-center sticky">
-          <div className="">
-            <Guide />
-          </div>
+      <div className="text-center left-0 bg-primary h-full min-h-[251px] flex flex-col justify-end ">
+        <section className="stk">
+          <Guide />
 
           <div className="max-w-[1152px] flex align-center justify-center items-center mx-auto gap-3 py-2 text-secondary ">
             <div className="flex flex-1 align-center items-center mt-2 gap-4 text-[12px] font-semibold text-center flex-wrap">
@@ -37,13 +36,12 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-3 mt-2 right-0">
+            <section className="flex flex-wrap gap-3 mt-2 right-0">
               <ThemeModal />
-
               <SoundModal />
-            </div>
+            </section>
           </div>
-        </div>
+        </section>
       </div>
     </>
   );

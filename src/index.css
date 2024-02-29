@@ -22,8 +22,13 @@ body, html {
   user-select: none;
 }
 
+
 .heigthcalc {
-  height: calc(100vh - 200px);
+  /*height: calc(100vh - 200px);*/
+  height: 600px;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
 
