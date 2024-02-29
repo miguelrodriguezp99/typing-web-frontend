@@ -8,12 +8,12 @@ const Footer = () => {
   return (
     <>
       <div>
-        <div className="absolute bottom-0 inset-x-0 text-center ">
+        <div className="text-center sticky">
           <div className="">
             <Guide />
           </div>
 
-          <div className="max-w-[1152px] flex align-center justify-center items-center mx-auto gap-3 p-2 text-secondary relative">
+          <div className="max-w-[1152px] flex align-center justify-center items-center mx-auto gap-3 py-2 text-secondary ">
             <div className="flex flex-1 align-center items-center mt-2 gap-4 text-[12px] font-semibold text-center flex-wrap">
               <div className="flex flex-row gap-1 ">
                 <Mail props="fill-iconstext w-4 h-4" />

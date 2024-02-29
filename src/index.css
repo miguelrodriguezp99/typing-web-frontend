@@ -10,11 +10,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
+}
+
+body, html {
+  background-color: var(--color-primary);
 }
 
 
 * button {
   user-select: none;
+}
+
+.heigthcalc {
+  height: calc(100vh - 200px);
 }
 
 

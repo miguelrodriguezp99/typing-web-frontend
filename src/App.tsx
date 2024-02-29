@@ -7,11 +7,18 @@ import Footer from "./components/Footer";
 import { Toaster } from 'sonner';
 import useMouseOut from "./hooks/useMouseOut";
 import TypeArea from "./components/TypeArea";
+import Options from "./components/Header/Options";
 
 
 function App() {
 
-  const { setWords } = useWordsStore();
+  const { setFocusedTrue, setWords } = useWordsStore();
+
+  const handleSetFocusedTrue = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setFocusedTrue();
+  };
+
 
   //Handle mouse out of the window
   useMouseOut();
@@ -25,44 +32,19 @@ function App() {
 
   return (
     <>
-      <Wrapper>
-        <Header />
+      <section
+        className="bg-primary
+         tracking-wider font-mono
+         md:px-10 sm:px-5 px-2 mx-auto 
+         lg:max-w-[1310px] heigthcalc"
+        onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleSetFocusedTrue(e)}
+      >
+        <Options />
         <Results />
         <TypeArea />
-        <Footer />
-      </Wrapper>
-
-      <Toaster richColors position="top-right" />
+      </section>
     </>
   );
 }
-
-
-
-const Wrapper = ({ children }: { children: React.ReactNode }) => {
-
-  const { setFocusedFalse, setFocusedTrue } = useWordsStore();
-
-  const handleSetFocusedTrue = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setFocusedTrue();
-  };
-
-  const handleSetFocusedFalse = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setFocusedFalse();
-
-  };
-
-  return (
-    <div id="wide-div" className="w-full bg-primary" onClick={(e) => handleSetFocusedFalse(e)}>
-      <section className="bg-primary min-h-screen tracking-wider font-mono
-       md:px-10 sm:px-5 px-2 relative mx-auto 
-       lg:max-w-[1310px]" onClick={(e) => handleSetFocusedTrue(e)}>
-        <div>{children}</div>
-      </section>
-    </div>
-  );
-};
 
 export default App;

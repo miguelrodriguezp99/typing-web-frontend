@@ -56,7 +56,7 @@ export default function NotificationModal() {
         <>
           <div
             onClick={toggleModal}
-            className={`bg-[#0d0d0e] bg-opacity-80 w-full h-full top-0 left-0 right-0 bottom-0 fixed ${backgroundClass}`}
+            className={`bg-[#0d0d0e] z-99 bg-opacity-80 w-full h-full top-0 left-0 right-0 bottom-0 fixed ${backgroundClass}`}
           ></div>
           <div
             className={`fixed bg-primary w-[382px] right-0 h-screen top-0 rounded-l-xl ${animationClass} zindex`}
