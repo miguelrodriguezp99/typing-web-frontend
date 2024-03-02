@@ -4,7 +4,7 @@ import "./Footer.css";
 const Guide = () => {
   return (
     <>
-      <div className="flex mx-auto items-center justify-center gap-3 text-[12px] text-iconstext ">
+      <div className="flex mx-auto items-center justify-center gap-3 text-[12px] text-iconstext mt-10 sm:mt-0">
         <GuideKeys text="tab" /> + <GuideKeys text="enter" /> - restart test
       </div>
 

@@ -15,9 +15,10 @@ const TypeArea = () => {
   return (
     <>
       <div
-        className={`animate-fade animate-once 
+        className={`
           max-h-[515px]  
-          mt-[50px] sm:mt-[75px] md:mt-[100px] lg:mt-[125px] 
+          mt-[50px] sm:mt-[75px] md:mt-[100px] 
+          animate-fade animate-once 
           animate-duration-[800ms] animate-normal 
           animate-fill-both ${actualState === "FINISHED" ? "hidden" : ""}`}
         onClick={handleDivClick}
@@ -36,7 +37,10 @@ const TypeArea = () => {
 
 const WordsContainer = ({ children }) => {
   return (
-    <div className="relative text-2xl max-w-6xl leading-relaxed mx-auto break-keep max-h-[160px] overflow-y-hidden">
+    <div
+      className="flex relative text-2xl max-w-6xl leading-relaxed 
+    mx-auto break-keep max-h-[160px] overflow-y-hidden"
+    >
       {children}
     </div>
   );

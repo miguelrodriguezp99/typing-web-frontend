@@ -25,7 +25,9 @@ body, html {
 
 .heigthcalc {
   /*height: calc(100vh - 200px);*/
-  height: 550px;
+  /* height: 550px; */
+  /* Restamos el header y el footer */
+  height: calc(100vh - 192px);
   position: sticky;
   top: 0;
   left: 0;

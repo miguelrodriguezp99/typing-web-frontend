@@ -23,7 +23,7 @@ const Options = () => {
   return (
     <>
       <div
-        className="max-w-[1152px] flex flex-col align-center justify-center mx-auto mt-2 gap-2
+        className="max-w-[1152px] flex flex-col align-center justify-center mx-auto py-2 gap-2
         animate-fade animate-once animate-duration-300 animate-ease-in animate-normal animate-fill-both"
       >
         <section
