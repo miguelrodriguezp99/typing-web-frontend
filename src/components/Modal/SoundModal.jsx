@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import "./Modal.css";
 import { useSoundsStore } from "../../store/sounds";
-import { SOUND_MAP, getSoundName } from "../Sound/sound";
+import { SOUND_MAP, getSoundName } from "../../sound/sound";
 import { Volume, VolumeSilence } from "../../assets/icons/FooterIcons";
 
 export default function SoundModal() {

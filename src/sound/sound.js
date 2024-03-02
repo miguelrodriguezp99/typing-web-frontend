@@ -1,6 +1,6 @@
-import typeSoft from "../../assets/sound/typeSoft.wav";
-import keyboard from "../../assets/sound/keyboard.wav";
-import cherryBlue from "../../assets/sound/cherryBlue.wav";
+import typeSoft from "../assets/sound/typeSoft.wav";
+import keyboard from "../assets/sound/keyboard.wav";
+import cherryBlue from "../assets/sound/cherryBlue.wav";
 
 const SOUND_MAP = {
   keyboard: keyboard,
