@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useTyping from "./../../hooks/useTyping";
 import { useWordsStore } from "./../../store/words";
 import Results from "./../../components/Results";
 import useMouseOut from "./../../hooks/useMouseOut";
 import TypeArea from "./../../components/TypeArea";
 import Options from "./../../components/Header/Options";
+import MobileOptions from "../../components/Header/MobileOptions";
+import useMobileOptions from "../../hooks/useMobileOptions";
 
 function App() {
   const { setWords } = useWordsStore();
@@ -19,10 +21,13 @@ function App() {
     setWords();
   }, [setWords]);
 
+  const { isMobile } = useMobileOptions();
+
   return (
     <>
       <BlurWrapper>
-        <Options />
+        {isMobile ? <MobileOptions /> : <Options />}
+
         <Results />
         <TypeArea />
       </BlurWrapper>
